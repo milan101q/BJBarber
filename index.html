@@ -1,0 +1,285 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- Primary SEO -->
+    <title>BJ Barber Chantilly | Sharp Looks, Crafted Daily</title>
+    <meta name="description" content="BJ Barber in Chantilly, VA. Expert barbers specializing in precision fades and beard sculpting at Gum Spring Village Center. Open 7 days a week.">
+    <meta name="keywords" content="BJ Barber Chantilly, Barbershop Southpoint Dr, Gum Spring Village Center Barber, Fades Chantilly, BJ Barber Reviews, Best Barber Southpoint">
+    <meta name="author" content="BJ Barber">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='20' fill='%23b45309'/%3E%3Ctext x='50%25' y='50%25' dominant-baseline='central' text-anchor='middle' font-family='sans-serif' font-weight='900' font-size='45' fill='white'%3EBJ%3C/text%3E%3C/svg%3E">
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Syncopate:wght@400;700&family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Inter', sans-serif; background-color: #f8fafc; color: #0f172a; margin: 0; }
+        .font-modern { font-family: 'Syncopate', sans-serif; }
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: #f1f5f9; }
+        ::-webkit-scrollbar-thumb { background: #b45309; border-radius: 10px; }
+        .nav-glass { background: rgba(255, 255, 255, 0.95); backdrop-filter: blur(12px); border-bottom: 1px solid rgba(0,0,0,0.05); }
+        .hero-vignette { background: linear-gradient(to bottom, rgba(15, 23, 42, 0.3), rgba(15, 23, 42, 0.7)); }
+        .card-premium { background: white; border: 1px solid #e2e8f0; transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1); }
+        .card-premium:hover { transform: translateY(-4px); border-color: #b45309; box-shadow: 0 20px 40px -15px rgba(0,0,0,0.1); }
+        .btn-copper { background-color: #b45309; color: white; transition: all 0.3s ease; }
+        .btn-copper:hover { background-color: #92400e; box-shadow: 0 10px 20px -5px rgba(180, 83, 9, 0.4); }
+    </style>
+<script type="importmap">
+{
+  "imports": {
+    "react": "https://esm.sh/react@^19.2.3",
+    "react-dom/client": "https://esm.sh/react-dom@^19.2.3/client",
+    "path": "https://esm.sh/path@^0.12.7",
+    "url": "https://esm.sh/url@^0.11.4",
+    "vite": "https://esm.sh/vite@^7.3.0",
+    "@vitejs/plugin-react": "https://esm.sh/@vitejs/plugin-react@^5.1.2"
+  }
+}
+</script>
+</head>
+<body>
+    <div id="root"></div>
+    <script type="text/babel" data-type="module">
+        import React, { useState, useEffect } from 'react';
+        import { createRoot } from 'react-dom/client';
+
+        const INFO = {
+            name: "BJ Barber",
+            address: "24640 Southpoint Dr STE 110, Chantilly, VA 20152",
+            center: "Gum Spring Village Center",
+            phone: "(703) 327-3133",
+            mapsUrl: "https://www.google.com/maps/dir/?api=1&destination=24640+Southpoint+Dr+STE+110+Chantilly+VA+20152",
+            reviewUrl: "https://www.google.com/maps/place/BJ+Barber/@38.936266,-77.5401259,17z/data=!4m8!3m7!1s0x89b64132d2302821:0x626b4f1a3bd823a5!8m2!3d38.9362291!4d-77.5402701!9m1!1b1!16s%2Fg%2F11hds036xy",
+            hours: [
+                { day: "Monday", time: "9:30 AM – 7:00 PM" },
+                { day: "Tuesday", time: "9:30 AM – 7:00 PM" },
+                { day: "Wednesday", time: "9:30 AM – 7:00 PM" },
+                { day: "Thursday", time: "9:30 AM – 7:00 PM" },
+                { day: "Friday", time: "9:30 AM – 7:00 PM" },
+                { day: "Saturday", time: "9:00 AM – 6:00 PM" },
+                { day: "Sunday", time: "9:00 AM – 5:00 PM" }
+            ],
+            services: [
+                { name: "Executive Cut", desc: "A precision tailored haircut, finished with a signature warm lather straight-razor shave." },
+                { name: "Signature Fade", desc: "Advanced taper techniques blended to perfection, customized for your head shape." },
+                { name: "Beard Sculpture", desc: "Detailed grooming using architectural lines and conditioning oils for a sharp finish." },
+                { name: "Traditional Shave", desc: "The quintessential barbershop experience with multi-step hot towels and premium lathers." },
+                { name: "Junior Styling", desc: "Quality grooming for young gentlemen in a professional and patient setting." },
+                { name: "Full Ritual", desc: "Our comprehensive grooming package: Haircut, Beard Sculpt, and a Cooling Facial." },
+                { name: "AND MORE", desc: "Inquire for details" }
+            ]
+        };
+
+        const Logo = ({ light = false }) => (
+            <div className="flex items-center space-x-3 cursor-pointer group" onClick={() => window.scrollTo({top:0, behavior:'smooth'})}>
+                <div className="w-10 h-10 bg-[#b45309] flex items-center justify-center rounded-md shadow-sm transform group-hover:scale-105 transition-transform">
+                    <span className="font-modern font-bold text-white text-lg">BJ</span>
+                </div>
+                <div className="flex flex-col">
+                    <span className={`font-modern font-bold text-base tracking-widest leading-none ${light ? 'text-white' : 'text-slate-900'}`}>BARBER</span>
+                    <span className="text-[9px] uppercase font-bold tracking-[0.2em] text-[#b45309]">Professional Grooming</span>
+                </div>
+            </div>
+        );
+
+        const Stars = () => (
+            <div className="flex items-center gap-0.5 text-amber-400">
+                {[...Array(5)].map((_, i) => (
+                    <svg key={i} className="w-4 h-4 fill-current" viewBox="0 0 20 20">
+                        <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+                    </svg>
+                ))}
+            </div>
+        );
+
+        const App = () => {
+            const [scrolled, setScrolled] = useState(false);
+            const [menuOpen, setMenuOpen] = useState(false);
+            const [bookingOpen, setBookingOpen] = useState(false);
+
+            useEffect(() => {
+                const handleScroll = () => setScrolled(window.scrollY > 50);
+                window.addEventListener('scroll', handleScroll);
+                return () => window.removeEventListener('scroll', handleScroll);
+            }, []);
+
+            const scrollTo = (id) => {
+                setMenuOpen(false);
+                const el = document.getElementById(id);
+                if (el) el.scrollIntoView({ behavior: 'smooth' });
+            };
+
+            return (
+                <div className="min-h-screen">
+                    {/* Header */}
+                    <nav className={`fixed top-0 w-full z-50 transition-all duration-500 ${scrolled ? 'nav-glass py-3 shadow-sm' : 'bg-transparent py-8'}`}>
+                        <div className="max-w-7xl mx-auto px-6 flex justify-between items-center">
+                            <Logo light={!scrolled} />
+                            <div className="hidden md:flex items-center space-x-12">
+                                {['Services', 'Location', 'Ethos'].map(item => (
+                                    <button key={item} onClick={() => scrollTo(item.toLowerCase())} className={`text-[11px] font-bold uppercase tracking-[0.2em] transition-colors ${scrolled ? 'text-slate-600 hover:text-[#b45309]' : 'text-white/80 hover:text-white'}`}>{item}</button>
+                                ))}
+                                <button onClick={() => setBookingOpen(true)} className="btn-copper px-7 py-2.5 rounded text-[11px] font-bold uppercase tracking-[0.2em]">Book Now</button>
+                            </div>
+                            <button onClick={() => setMenuOpen(true)} className={`md:hidden ${scrolled ? 'text-slate-900' : 'text-white'}`}>
+                                <svg className="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 8h16M4 16h16"/></svg>
+                            </button>
+                        </div>
+                    </nav>
+
+                    {/* Mobile Navigation */}
+                    <div className={`fixed inset-0 z-[60] bg-white transition-opacity duration-300 ${menuOpen ? 'opacity-100 pointer-events-auto' : 'opacity-0 pointer-events-none'}`}>
+                        <div className="p-8 flex flex-col h-full">
+                            <div className="flex justify-between items-center mb-20">
+                                <Logo />
+                                <button onClick={() => setMenuOpen(false)}><svg className="w-8 h-8 text-slate-900" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M6 18L18 6M6 6l12 12" strokeWidth="2"/></svg></button>
+                            </div>
+                            <div className="flex flex-col space-y-10">
+                                {['Services', 'Location', 'Ethos'].map(item => (
+                                    <button key={item} onClick={() => scrollTo(item.toLowerCase())} className="text-3xl font-modern font-bold text-left text-slate-900 uppercase tracking-tight">{item}</button>
+                                ))}
+                                <button onClick={() => { setMenuOpen(false); setBookingOpen(true); }} className="text-3xl font-modern font-bold text-left text-[#b45309] uppercase tracking-tight">Reserve Seat</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    {/* Hero Section */}
+                    <section className="relative h-[90vh] flex items-center justify-center overflow-hidden">
+                        <div className="absolute inset-0 z-0">
+                            <img src="https://images.unsplash.com/photo-1503951914875-452162b0f3f1?auto=format&fit=crop&q=80&w=2000" className="w-full h-full object-cover scale-105" alt="Professional Barber Studio" />
+                            <div className="absolute inset-0 hero-vignette"></div>
+                        </div>
+                        <div className="relative z-10 text-center px-6 w-full max-w-4xl">
+                            <a href={INFO.reviewUrl} target="_blank" rel="noopener noreferrer" className="inline-flex flex-col items-center gap-2 mb-8 group cursor-pointer">
+                                <Stars />
+                                <span className="text-[10px] font-bold tracking-[0.5em] text-white/70 uppercase group-hover:text-white transition-colors">Top Rated on Google</span>
+                            </a>
+                            <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-modern font-bold leading-[1.15] tracking-tight mb-8 text-white">
+                                Sharp Looks,<br/><span className="text-[#d97706]">Crafted Daily.</span>
+                            </h1>
+                            <p className="max-w-xl mx-auto text-white/80 text-base md:text-lg mb-12 font-medium leading-relaxed">Providing high-standard grooming services for the modern gentleman. Experience the art of precision in Chantilly.</p>
+                            <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
+                                <button onClick={() => setBookingOpen(true)} className="btn-copper px-10 py-4 rounded font-bold uppercase text-xs tracking-[0.2em] w-full sm:w-auto">Book Now</button>
+                                <a href={INFO.mapsUrl} target="_blank" rel="noopener noreferrer" className="bg-white/10 backdrop-blur-md border border-white/20 text-white px-10 py-4 rounded font-bold uppercase text-xs tracking-[0.2em] hover:bg-white hover:text-slate-900 transition-all w-full sm:w-auto">Find Us</a>
+                            </div>
+                        </div>
+                    </section>
+
+                    {/* Services Section */}
+                    <section id="services" className="py-32 px-6 bg-white">
+                        <div className="max-w-7xl mx-auto">
+                            <div className="flex flex-col items-center mb-24 text-center">
+                                <span className="text-[#b45309] text-[11px] font-bold tracking-[0.3em] uppercase mb-4 block">Our Specialties</span>
+                                <h2 className="text-3xl md:text-5xl font-modern font-bold text-slate-900 uppercase tracking-tight">The Selection</h2>
+                                <div className="w-20 h-1 bg-[#b45309] mt-8"></div>
+                            </div>
+                            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                                {INFO.services.map((s, i) => (
+                                    <div key={i} className="card-premium p-10 flex flex-col rounded-sm">
+                                        <h3 className="text-lg font-bold mb-4 text-slate-900 uppercase tracking-widest">{s.name}</h3>
+                                        <p className="text-slate-500 text-sm leading-relaxed mb-10 flex-grow">{s.desc}</p>
+                                        <div className="flex items-center justify-between">
+                                            <span className="text-[10px] font-bold text-slate-400 uppercase tracking-widest">Master Detail</span>
+                                            <svg className="w-5 h-5 text-[#b45309]/30" fill="currentColor" viewBox="0 0 20 20"><path d="M11 3a1 1 0 10-2 0v1a1 1 0 102 0V3zM15.657 5.757a1 1 0 00-1.414-1.414l-.707.707a1 1 0 001.414 1.414l.707-.707zM18 10a1 1 0 01-1 1h-1a1 1 0 110-2h1a1 1 0 011 1zM5.05 6.464A1 1 0 106.464 5.05l-.707-.707a1 1 0 00-1.414 1.414l.707.707zM5 10a1 1 0 01-1 1H3a1 1 0 110-2h1a1 1 0 011 1zM8 16v-1a1 1 0 112 0v1a1 1 0 11-2 0zM13.536 14.95a1 1 0 010-1.414l.707-.707a1 1 0 011.414 1.414l-.707.707a1 1 0 01-1.414 0zM6.464 14.95a1 1 0 01-1.414 0l-.707-.707a1 1 0 011.414-1.414l.707.707a1 1 0 010 1.414z"/></svg>
+                                        </div>
+                                    </div>
+                                ))}
+                            </div>
+                        </div>
+                    </section>
+
+                    {/* Ethos Section */}
+                    <section id="ethos" className="py-40 bg-slate-950 text-center px-6 relative overflow-hidden">
+                        <div className="absolute top-0 left-0 w-full h-full opacity-10">
+                            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-[30rem] font-black text-white whitespace-nowrap select-none font-modern">BJ</div>
+                        </div>
+                        <div className="max-w-4xl mx-auto relative z-10">
+                            <h2 className="text-2xl sm:text-3xl md:text-5xl font-modern font-bold tracking-tight leading-tight italic text-white/90">
+                                "STYLE IS A REFLECTION<br/>
+                                <span className="text-slate-600 not-italic uppercase font-black text-lg sm:text-xl tracking-[0.3em]">OF YOUR ATTITUDE</span> <br/>
+                                <span className="text-[#b45309]">AND YOUR PERSONALITY."</span>
+                            </h2>
+                        </div>
+                    </section>
+
+                    {/* Location & Contact */}
+                    <section id="location" className="py-32 px-6 bg-slate-50">
+                        <div className="max-w-7xl mx-auto">
+                            <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-start">
+                                <div>
+                                    <span className="text-[#b45309] text-[11px] font-bold tracking-[0.3em] uppercase mb-6 block">Our Location</span>
+                                    <h2 className="text-3xl md:text-4xl font-modern font-bold text-slate-900 mb-12">Southpoint Drive</h2>
+                                    <div className="space-y-12">
+                                        <div>
+                                            <p className="text-xl font-bold text-slate-900 mb-2">{INFO.address}</p>
+                                            <p className="text-slate-500 mb-8">{INFO.center}</p>
+                                            <div className="flex flex-wrap gap-4">
+                                                <a href={INFO.mapsUrl} target="_blank" rel="noopener noreferrer" className="btn-copper px-8 py-4 rounded text-xs font-bold uppercase tracking-widest inline-block">Get Directions</a>
+                                                <a href={INFO.reviewUrl} target="_blank" rel="noopener noreferrer" className="border border-slate-200 text-slate-600 hover:border-slate-400 hover:text-slate-900 px-8 py-4 rounded text-xs font-bold uppercase tracking-widest inline-block transition-all bg-white">Review Us</a>
+                                            </div>
+                                        </div>
+                                        <div>
+                                            <h4 className="text-[10px] font-bold text-slate-400 uppercase tracking-widest mb-4">Contact Desk</h4>
+                                            <a href={`tel:${INFO.phone}`} className="text-2xl md:text-3xl font-modern font-bold text-slate-900 hover:text-[#b45309] transition-colors">{INFO.phone}</a>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div className="bg-white p-10 sm:p-14 rounded-md shadow-sm border border-slate-200">
+                                    <h3 className="text-lg font-bold mb-10 text-[#b45309] uppercase tracking-[0.2em]">Shop Hours</h3>
+                                    <div className="space-y-6">
+                                        {INFO.hours.map((h, i) => (
+                                            <div key={i} className="flex justify-between border-b border-slate-100 pb-4">
+                                                <span className="text-slate-400 font-bold uppercase text-[10px] tracking-widest">{h.day}</span>
+                                                <span className="font-semibold text-slate-700 text-sm">{h.time}</span>
+                                            </div>
+                                        ))}
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+
+                    {/* Footer */}
+                    <footer className="py-20 px-6 bg-white border-t border-slate-100 text-center">
+                        <div className="max-w-7xl mx-auto flex flex-col items-center gap-8">
+                            <Logo />
+                            <div className="flex gap-8">
+                                <a href={INFO.reviewUrl} target="_blank" rel="noopener noreferrer" className="text-slate-400 text-[10px] font-bold uppercase tracking-widest hover:text-[#b45309] transition-colors">Leave a Review</a>
+                                <a href={INFO.mapsUrl} target="_blank" rel="noopener noreferrer" className="text-slate-400 text-[10px] font-bold uppercase tracking-widest hover:text-[#b45309] transition-colors">Visit Us</a>
+                            </div>
+                            <p className="text-slate-400 text-[9px] font-bold tracking-[0.4em] uppercase">© {new Date().getFullYear()} BJ Barber Chantilly. Sharp Looks, Crafted Daily.</p>
+                        </div>
+                    </footer>
+
+                    {/* Booking Modal */}
+                    {bookingOpen && (
+                        <div className="fixed inset-0 z-[100] flex items-center justify-center p-6">
+                            <div className="absolute inset-0 bg-slate-950/80 backdrop-blur-sm" onClick={() => setBookingOpen(false)}></div>
+                            <div className="bg-white relative max-w-lg w-full p-12 rounded-sm text-center shadow-2xl">
+                                <h2 className="text-2xl font-modern font-bold mb-6 text-slate-900 uppercase tracking-tight">Schedule Your Visit</h2>
+                                <p className="text-slate-500 mb-10 text-sm leading-relaxed">Walk-ins are always welcome, but to guarantee your preferred barber and time slot, we recommend booking ahead by phone.</p>
+                                <a href={`tel:${INFO.phone}`} className="btn-copper block w-full py-5 rounded font-bold text-lg mb-6 tracking-widest uppercase">Call {INFO.phone}</a>
+                                <button onClick={() => setBookingOpen(false)} className="text-slate-400 text-[10px] font-bold uppercase tracking-widest hover:text-slate-900 transition-colors">Return to Site</button>
+                            </div>
+                        </div>
+                    )}
+                </div>
+            );
+        };
+
+        const container = document.getElementById('root');
+        if (container) {
+            const root = createRoot(container);
+            root.render(<App />);
+        }
+    </script>
+</body>
+</html>
